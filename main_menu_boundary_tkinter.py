@@ -2,23 +2,41 @@ from tkinter import *
 import sys
 
 
-window = Tk()
-window.geometry('500x250')
+class main_menu_boundary():
+    def __init__(self, context):
+        self.context = context
 
-window.title("TigerWallet")
- 
-lbl = Label(window, text="Welcome to TigerWallet!")
-lbl.grid(column=0, row=0)
+        self.context.title("TigerWallet")
+        
+        self.lbl = Label(context, text="Welcome to TigerWallet!")
+        self.lbl.pack()
 
-lbl2 = Label(window, text="Login or Create an Account.")
+        self.lb2 = Label(context, text="Login or Create an Account.")
+        self.lb2.pack()
 
-login = Button(window, text="Login")
-login.grid(column=0, row=1)
+        self.login = Button(context, text="Login", command=self.start_login)
+        self.login.pack()
 
-create_account = Button(window, text="Create Account")
-create_account.grid(column=0, row=2)
+        self.create_account = Button(context, text="Create Account", command=self.start_create_account)
+        self.create_account.pack()
 
-exit_btn = Button(window, text="Exit", command=exit)
-exit_btn.grid(column=0, row=3)
+        self.exit_btn = Button(context, text="Exit", command=context.quit)
+        self.exit_btn.pack()
 
-window.mainloop()
+    def start_login(self):
+        self.context.destroy()
+        login = Tk()
+
+        login.mainloop()
+
+    def start_create_account(self):
+        self.context.destroy()
+        create_account = Tk()
+        create_account.mainloop()
+
+
+
+
+root = Tk()
+m = main_menu_boundary(root)
+root.mainloop()
