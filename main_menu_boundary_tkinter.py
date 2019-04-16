@@ -1,5 +1,7 @@
 from tkinter import *
 import sys
+import login_boundary
+import create_account_boundary
 
 
 class main_menu_boundary():
@@ -29,9 +31,7 @@ class main_menu_boundary():
     # Destroy the current window and start login use case
     def start_login(self):
         self.context.destroy()
-        login = Tk()
-        # placeholder 
-        login.mainloop()
+        login_boundary.start()
 
     # Destroy the current window and start create account use case
     def start_create_account(self):
