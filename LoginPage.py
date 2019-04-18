@@ -36,6 +36,7 @@ class LoginPage(tk.Frame):
         self.password.pack(side="left")
 
 
+        # navigation buttons
         login_button = tk.Button(navigation_frame, text="Login", 
                                 command=lambda: self.login(self.username, self.password))
         login_button.pack()

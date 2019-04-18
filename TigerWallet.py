@@ -20,12 +20,12 @@ class TigerWallet(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-
+        # tuple containing all active pages 
+        page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
-        # tuple containing page names 
         # add additional pages to this tuple
-        for F in (hp.HomePage, lp.LoginPage):
+        for F in page_list:
             page_name = F.__name__
             frame = F(context=container, controller=self)
             self.frames[page_name] = frame

@@ -16,14 +16,12 @@ class HomePage(tk.Frame):
 
         login_button = tk.Button(self, text="Login", 
                                 command=lambda: controller.show_frame("LoginPage"))
+        login_button.pack()
 
-        # create_account_button = tk.Button(self, text="Create Account", 
-        #                         command=lambda: controller.show_frame("CreateAccountPage"))
-        create_account_button = tk.Button(self, text="Create Account")
+        create_account_button = tk.Button(self, text="Create Account", 
+                                command=lambda: controller.show_frame("CreateAccountPage"))
+        create_account_button.pack()
 
         exit_button = tk.Button(self, text="Exit", 
-                                command=quit)
-
-        login_button.pack()
-        create_account_button.pack()
+                                command=quit)        
         exit_button.pack()
