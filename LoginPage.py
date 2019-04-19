@@ -58,11 +58,14 @@ class LoginPage(tk.Frame):
         
     def login(self, username, password):
         # verify login 
+        self.load_data()
         # lauch main menu
         print(username)
         print(password)
         
+        # hide notification 
         self.unsuccessful.pack_forget()
+
         if username in self.user_data and self.user_data[username] == password:
             # successful login 
             print("Success")
@@ -75,6 +78,8 @@ class LoginPage(tk.Frame):
             
     
     def load_data(self):
+        # clear dictionary
+        self.user_data = {}
         file = open("database/user_data.dat", "r")
         for line in file.readlines():
             line = line.split()
@@ -83,3 +88,4 @@ class LoginPage(tk.Frame):
             password_in = line[1]
             self.user_data[username_in] = password_in
         print(self.user_data)
+        file.close()
