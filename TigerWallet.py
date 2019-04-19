@@ -2,7 +2,7 @@ import tkinter as tk
 import HomePage as hp
 import LoginPage as lp
 import CreateAccountPage as cap
-import sys
+import MainMenu as mm
 
 
 # Each TigerWallet instance inherits tk.  
@@ -22,7 +22,7 @@ class TigerWallet(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         # tuple containing all active pages 
-        page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage)
+        page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
