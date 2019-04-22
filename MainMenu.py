@@ -13,14 +13,39 @@ class MainMenu(tk.Frame):
         label1 = tk.Label(self, text="You have been logged in!")
         label1.pack()
 
-        login_button = tk.Button(self, text="Login", 
-                                command=lambda: controller.show_frame("LoginPage"))
-        login_button.pack()
+        add_bank_button = tk.Button(self, text="Add Bank Account", 
+                                command=lambda: controller.show_frame("AddBankAccountPage"))
+        add_bank_button.pack()
 
-        create_account_button = tk.Button(self, text="Create Account", 
-                                command=lambda: controller.show_frame("CreateAccountPage"))
-        create_account_button.pack()
+        # placeholder
+        transfer_button = tk.Button(self, text="Make a Transfer", 
+                                command=self.logout)
+        transfer_button.pack()
+
+        # placeholder
+        financial_goals_button = tk.Button(self, text="Financial Goals", 
+                                command=self.logout)
+        financial_goals_button.pack()
+
+        # placeholder
+        balance_button = tk.Button(self, text="Check Balance", 
+                                command=self.logout)
+        balance_button.pack()
+
+        logout_button = tk.Button(self, text="Log Out", 
+                                command=self.logout)
+        logout_button.pack()
 
         exit_button = tk.Button(self, text="Exit", 
                                 command=quit)        
         exit_button.pack()
+
+    # bind user to bank 
+    def add_bank(self, new_bank):
+        pass 
+
+    def logout(self):
+        # remove user from current session
+        open('database/current_session.dat', 'w').close()
+        self.controller.show_frame("HomePage")
+

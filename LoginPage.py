@@ -1,5 +1,6 @@
 import tkinter as tk    
 import TigerWallet
+import User
 
 class LoginPage(tk.Frame):
     # context = parent 
@@ -55,7 +56,7 @@ class LoginPage(tk.Frame):
                                 command=quit)
         exit_button.pack()
 
-        
+
     def login(self, username, password):
         # verify login 
         self.load_data()
@@ -65,18 +66,17 @@ class LoginPage(tk.Frame):
         
         # hide notification 
         self.unsuccessful.pack_forget()
-
         if username in self.user_data and self.user_data[username] == password:
             # successful login 
             print("Success")
+            set_current_session(username, password)
             self.controller.show_frame("MainMenu")
         else: 
             # unsuccessful login 
             print("Failure")
             self.unsuccessful.pack()
-        
-            
-    
+   
+
     def load_data(self):
         # clear dictionary
         self.user_data = {}
@@ -89,3 +89,20 @@ class LoginPage(tk.Frame):
             self.user_data[username_in] = password_in
         print(self.user_data)
         file.close()
+
+def set_current_session(username, password):
+    file = open("database/current_session.dat", "w")
+    file.write(username + " " + password)
+    file.close()
+
+def get_current_session():
+    user_info = ["", ""]
+    file = open("database/current_session.dat", "r")
+    line = file.readline().split()
+    print(line)
+    file.close()
+    user_info[0] = line[0]
+    user_info[1] = line[1]
+    user = User.User(user_info[0], user_info[1]) 
+    print(user)
+    return user
