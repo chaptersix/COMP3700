@@ -32,6 +32,10 @@ class MainMenu(tk.Frame):
                                 command=self.logout)
         balance_button.pack()
 
+        view_accounts_button = tk.Button(self, text="View Accounts", 
+                                command=self.logout)
+        view_accounts_button.pack()
+
         logout_button = tk.Button(self, text="Log Out", 
                                 command=self.logout)
         logout_button.pack()

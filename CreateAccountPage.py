@@ -23,7 +23,7 @@ class CreateAccountPage(tk.Frame):
         self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The username you entered is already in use.")
         self.unsuccessful2 = tk.Label(self, text="Unsuccesful. Your passwords do not match.")
         # successful login notification 
-        self.successful = tk.Label(self, text="Success! Your TigerWallet account has been created.")
+        self.successful = tk.Label(self, text="Success! Your TigerWallet account has been created.\nReturn to the Home Page to login.")
 
         self.controller = controller
 
