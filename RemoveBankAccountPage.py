@@ -1,7 +1,7 @@
 import tkinter as tk 
 import LoginPage
 
-class AddBankAccountPage(tk.Frame):
+class RemoveBankAccountPage(tk.Frame):
     def __init__(self, context, controller):
         tk.Frame.__init__(self, context)
 
@@ -29,19 +29,14 @@ class AddBankAccountPage(tk.Frame):
 
         self.controller = controller
 
-        self.lbl = tk.Label(welcome_frame, text="Add a Bank Account to Your TigerWallet Account!")
+        self.lbl = tk.Label(welcome_frame, text="Remove a Bank Account from Your TigerWallet Account!")
         self.lbl.pack()
 
         m_text = tk.StringVar()
-        m_text.set("Choose a Supported Bank and Enter Your Account Number.")
+        m_text.set("Enter the corresponding Account Number for the Account You Wish to Remove.")
         self.lbl = tk.Label(welcome_frame, textvariable=m_text)
         self.lbl.pack()
 
-        # get bank
-        bank_label = tk.Label(select_bank_frame, text="Name of Bank:", height=4)
-        bank_label.pack(side="left")
-        self.bank = tk.Entry(select_bank_frame, width=15)
-        self.bank.pack(side="left")
 
         # get account_number
         account_number_label = tk.Label(account_number_frame, text="Account Number:", height=4)
@@ -52,7 +47,7 @@ class AddBankAccountPage(tk.Frame):
 
         # navigation buttons
         add_button = tk.Button(navigation_frame, text="Add Account", 
-                                command=lambda: self.add_account(self.bank.get(), self.account_number.get()))
+                                command=lambda: self.remove_account(self.account_number.get()))
         add_button.pack()
 
         return_button = tk.Button(navigation_frame, text="Back", 
@@ -64,20 +59,25 @@ class AddBankAccountPage(tk.Frame):
         exit_button.pack()
 
 
-    def add_account(self, bank_in, account_number_in):
-        bank_in = bank_in.lower()
-        current_user = LoginPage.get_current_session()
+    def remove_account(self, account_number_in):
         self.successful.pack_forget()
         self.unsuccessful1.pack_forget()
-        if account_number_in not in self.active_account_numbers:
+        if account_number_in in self.active_account_numbers:
             # success
-            file = open("database/bank_username_account.dat", "a")
-            file.write(bank_in + " " + current_user.get_username() + " " + account_number_in + "\n")
-            file.close()
+            self.remove_from_file("database/bank_username_account.dat", account_number_in)
             self.successful.pack()
         else:
             # failure 
             self.unsuccessful1.pack_forget()
+
+    def remove_from_file(self, filename, item):
+        with open(filename, "r") as f:
+            lines = f.readlines()
+        with open(filename, "w") as f:
+            for line in lines:
+                if item not in line.strip("\n"):
+                    f.write(line)
+        pass
 
 
     def load_data(self):
