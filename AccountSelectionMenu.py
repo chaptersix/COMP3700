@@ -21,31 +21,20 @@ class AccountSelectionMenu(tk.Frame):
         instructions = tk.Label(instructions_frame, text="Select which accounts you would like to view", fg="black")
         instructions.pack()
 
-        # Initialize other sub-pages of the AccountSelectionMenu
-        # tuple containing all active pages
-        page_list = (cam.ChecckingAccountsMenu, sam.SavingsAccountsMenu)
-        # dictionary mapping frames to the corresponding page names
-        self.frames = {}
-        # add additional pages to this tuple
-        for F in page_list:
-            page_name = F.__name__
-            frame = F(context=context, controller=self)
-            self.frames[page_name] = frame
-            # ensures frames are placed in the same location
-            frame.grid(row=0, column=0, sticky="nsew")
-
         # Add options for the user's navigation.
         options_frame = tk.Frame(self)
         options_frame.pack()
 
-        checking_button = tk.Button(options_frame, text="Checking Accounts", fg="black")
+        checking_button = tk.Button(options_frame, text="Checking Accounts", fg="black",
+                                    command=lambda: controller.show_frame("CheckingAccountsMenu"))
         checking_button.grid(row = 0, column = 0)
 
-        savings_button = tk.Button(options_frame, text="Savings Accounts", fg="black")
+        savings_button = tk.Button(options_frame, text="Savings Accounts", fg="black",
+                                   command=lambda: controller.show_frame("SavingsAccountsMenu"))
         savings_button.grid(row = 0, column = 1)
 
-        home_button = tk.Button(options_frame, text="Back Home", fg="black",
-                                command=lambda: controller.show_frame("HomePage"))
+        home_button = tk.Button(options_frame, text="Back to Main Menu", fg="black",
+                                command=lambda: controller.show_frame("MainMenu"))
         home_button.grid(row = 1, columnspan = 2)
 
         exit_button = tk.Button(options_frame, text="Exit", fg="black", command = quit)

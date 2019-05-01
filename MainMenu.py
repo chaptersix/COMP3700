@@ -33,7 +33,7 @@ class MainMenu(tk.Frame):
         balance_button.pack()
 
         view_accounts_button = tk.Button(self, text="View Accounts", 
-                                command=self.logout)
+                                command=lambda: controller.show_frame("AccountSelectionMenu"))
         view_accounts_button.pack()
 
         logout_button = tk.Button(self, text="Log Out", 

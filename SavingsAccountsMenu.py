@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class SavingsAccountMenu(tk.Frame):
+class SavingsAccountsMenu(tk.Frame):
     # context = parent
     # controller = TigerWallet object
     def __init__(self, context, controller):

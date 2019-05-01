@@ -60,7 +60,7 @@ class LoginPage(tk.Frame):
     def login(self, username, password):
         # verify login 
         self.load_data()
-        # lauch main menu
+        # launch main menu
         print(username)
         print(password)
         
