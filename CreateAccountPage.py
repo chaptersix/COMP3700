@@ -1,28 +1,28 @@
-import tkinter as tk 
+import tkinter as tk
 
 class CreateAccountPage(tk.Frame):
     def __init__(self, context, controller):
         tk.Frame.__init__(self, context)
 
         # member username_password_map
-        # store user data in user_data during execution 
+        # store user data in user_data during execution
         self.user_data = {}
         self.load_data()
 
-        # break up layout into multiple sub frames 
+        # break up layout into multiple sub frames
         welcome_frame = tk.Frame(self)
         welcome_frame.pack()
         username_frame = tk.Frame(self)
         username_frame.pack()
         password_frame = tk.Frame(self)
         password_frame.pack()
-        navigation_frame = tk.Frame(self) 
+        navigation_frame = tk.Frame(self)
         navigation_frame.pack()
 
-        # unsuccessful login notification 
+        # unsuccessful login notification
         self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The username you entered is already in use.")
         self.unsuccessful2 = tk.Label(self, text="Unsuccesful. Your passwords do not match.")
-        # successful login notification 
+        # successful login notification
         self.successful = tk.Label(self, text="Success! Your TigerWallet account has been created.\nReturn to the Home Page to login.")
 
         self.controller = controller
@@ -50,22 +50,22 @@ class CreateAccountPage(tk.Frame):
         self.password2.pack(side="left")
 
         # navigation buttons
-        create_button = tk.Button(navigation_frame, text="Create", 
+        create_button = tk.Button(navigation_frame, text="Create",
                                 command=lambda: self.verify(self.username.get(), self.password1.get(), self.password2.get()))
         create_button.pack()
 
-        return_button = tk.Button(navigation_frame, text="Back Home", 
+        return_button = tk.Button(navigation_frame, text="Back Home",
                                 command=lambda: controller.show_frame("HomePage"))
         return_button.pack()
 
-        exit_button = tk.Button(navigation_frame, text="Exit", 
+        exit_button = tk.Button(navigation_frame, text="Exit",
                                 command=quit)
         exit_button.pack()
 
 
     def verify(self, username, password1, password2):
         """verify that the supplied username is valid"""
-        # hide notifications 
+        # hide notifications
         self.unsuccessful1.pack_forget()
         self.unsuccessful2.pack_forget()
         self.successful.pack_forget()
@@ -83,7 +83,7 @@ class CreateAccountPage(tk.Frame):
         if username in self.user_data:
             # do nothing
             # don't write the same user data twice
-            pass 
+            pass
         else:
             file = open("database/user_data.dat", "a")
             file.write(username + " " + password + "\n")
@@ -96,9 +96,8 @@ class CreateAccountPage(tk.Frame):
         file = open("database/user_data.dat", "r")
         for line in file.readlines():
             line = line.split()
-            print(line)
             username_in = line[0]
             password_in = line[1]
             self.user_data[username_in] = password_in
-        print(self.user_data)
+        print("User data From Create Account:\n{}".format(self.user_data))
         file.close()
