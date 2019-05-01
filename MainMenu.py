@@ -22,18 +22,12 @@ class MainMenu(tk.Frame):
                                 command=self.logout)
         transfer_button.pack()
 
-        # placeholder
         financial_goals_button = tk.Button(self, text="Financial Goals", 
-                                command=self.logout)
+                                command=lambda: controller.show_frame("AddGoalPage"))
         financial_goals_button.pack()
 
-        # placeholder
-        balance_button = tk.Button(self, text="Check Balance", 
-                                command=self.logout)
-        balance_button.pack()
-
-        view_accounts_button = tk.Button(self, text="View Accounts", 
-                                command=self.logout)
+        view_accounts_button = tk.Button(self, text="Check Balance", 
+                                command=lambda: controller.show_frame("AccountSelectionMenu"))
         view_accounts_button.pack()
 
         logout_button = tk.Button(self, text="Log Out", 
