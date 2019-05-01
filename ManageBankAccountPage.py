@@ -24,7 +24,7 @@ class ManageBankAccountPage(tk.Frame):
 
         self.controller = controller
 
-        self.lbl = tk.Label(welcome_frame, text="Manage Your Bank Acounts within TigerWallet!")
+        self.lbl = tk.Label(welcome_frame, text="Manage Your Bank Accounts within TigerWallet!")
         self.lbl.pack()
 
         # navigation buttons
