@@ -1,23 +1,66 @@
-import User
+class BankAccountEntity():
+    def __init__(self):
+        pass
 
-class BankAccount():
-    def __init__(self, routing_number_in, account_number_in):
-        self.routing_number = routing_number_in
-        self.account_number = account_number_in
-        self.linked_user = None
-    
-    def get_routing_number(self):
-        return self.routing_number
-    
-    def get_account_number(self):
-        return self.account_number
+    def load_account_data(self):
+        account_data = []
+        with open("database/bank_username_account.dat", "r") as bank_file:
+            for line in bank_file.readlines():
+                line = line.split()
+                bank = line[0]
+                user = line[1]
+                account = line[2]
+                account_data.append([bank, user, account])
+        print("Load Bank Accounts:\n{}".format(account_data))
+        return account_data
 
-    def set_user(self, user):
-        self.linked_user = user
+    def write_active_accounts(self, account_data_in):
+        outStr = ""
+        for line in account_data_in:
+            outStr += "{} {} {}\n".format(line[0], line[1], line[2])
+        with open("database/bank_username_account.dat", "w") as bank_file:
+            bank_file.write(outStr)
 
-    def set_routing_number(self, routing_number_in):
-        self.routing_number = routing_number_in
+        print("Write Bank Accounts:\n{}".format(outStr))
 
-    def set_account_number(self, account_number_in):
-        self.account_number = account_number_in
+
+class BankAccountController:
+    def __init__(self):
+        self.account_data = BankAccountEntity().load_account_data()
+        self.user_data = {}
+
+    def is_account_active(self, account_number):
+            for  account in self.account_data:
+                if account[2] == account_number:
+                    return True
+            return False
+
+    def add_account(self, bank_in, account_number_in, current_user_in):
+        self.account_data = BankAccountEntity().load_account_data()
+        bank_in = bank_in.lower()
+        if  not self.is_account_active(account_number_in):
+            self.account_data.append([bank_in, current_user_in, account_number_in])
+            BankAccountEntity().write_active_accounts(self.account_data)
+            return True
+        return False
+
+    def remove_account(self, account_number_in, current_user_in):
+        self.account_data = BankAccountEntity().load_account_data()
+        for index, account in  enumerate(self.account_data):
+            if account[1] == current_user_in and account[2] == account_number_in:
+                del self.account_data[index]
+                BankAccountEntity().write_active_accounts(self.account_data)
+                return True
+        return False
+
+    def load_user_data(self):
+        with open("database/user_data.dat", "r") as user_file:
+            for line in user_file.readlines():
+                line = line.split()
+                username_in = line[0]
+                password_in = line[1]
+                self.user_data[username_in] = password_in
+        print("Bank Controller User Data: {}".format(self.user_data))
+        user_file.close()
+
 
