@@ -29,7 +29,7 @@ class TigerWallet(tk.Tk):
 
         # tuple containing all active pages 
         page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu, mbap.ManageBankAccountPage, abap.AddBankAccountPage
-                    ,rbap.RemoveBankAccountPage)
+                    ,rbap.RemoveBankAccountPage, asm.AccountSelectionMenu, cam.CheckingAccountsMenu,sam.SavingsAccountsMenu)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
