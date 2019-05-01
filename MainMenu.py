@@ -13,8 +13,8 @@ class MainMenu(tk.Frame):
         label1 = tk.Label(self, text="You have been logged in!")
         label1.pack()
 
-        add_bank_button = tk.Button(self, text="Add Bank Account", 
-                                command=lambda: controller.show_frame("AddBankAccountPage"))
+        add_bank_button = tk.Button(self, text="Manage Bank Accounts", 
+                                command=lambda: controller.show_frame("ManageBankAccountPage"))
         add_bank_button.pack()
 
         # placeholder

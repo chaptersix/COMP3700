@@ -3,7 +3,9 @@ import HomePage as hp
 import LoginPage as lp
 import CreateAccountPage as cap
 import MainMenu as mm
+import ManageBankAccountPage as mbap
 import AddBankAccountPage as abap
+import RemoveBankAccountPage as rbap
 import AccountSelectionMenu as asm
 import CheckingAccountsMenu as cam
 import SavingsAccountsMenu as sam
@@ -26,8 +28,8 @@ class TigerWallet(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         # tuple containing all active pages 
-        page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu, abap.AddBankAccountPage,
-                     asm.AccountSelectionMenu, cam.CheckingAccountsMenu, sam.SavingsAccountsMenu)
+        page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu, mbap.ManageBankAccountPage, abap.AddBankAccountPage
+                    ,rbap.RemoveBankAccountPage)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
@@ -44,6 +46,8 @@ class TigerWallet(tk.Tk):
         # return a given frame from self.frames 
         frame = self.frames[page_name]
         frame.tkraise()
+
+
 
 
 if __name__ == "__main__":
