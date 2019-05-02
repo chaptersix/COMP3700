@@ -33,8 +33,8 @@ class NewSavingsGoal(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
-        clk_ok_btn = tk.Button(self, text="Okay",
-                               command=lambda: add_savings_goal(name_entry, goal_amt_entry, exp_date_entry))
+        clk_ok_btn = tk.Button(self, text="Okay", fg='blue',
+                               command=lambda: add_savings_goal(name_entry.get(), goal_amt_entry.get(), exp_date_entry.get()))
         clk_ok_btn.pack(pady=3)
 
         # takes you back to the tigerWallet financial goals main menu.

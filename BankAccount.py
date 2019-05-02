@@ -1,4 +1,4 @@
-import TigerWallet
+from Account import AccountController
 
 class BankAccountEntity():
     def __init__(self):
@@ -32,7 +32,7 @@ class BankAccountEntity():
 class BankAccountController:
     def __init__(self):
         self.account_data = BankAccountEntity().load_account_data()
-        self.user_data = {}
+        self.user_data = {} # responsibility should be reassigned to a user controller
 
     def is_account_active(self, account_number):
             for  account in self.account_data:
@@ -51,7 +51,9 @@ class BankAccountController:
             return True
         return False
 
-    def remove_account(self, account_number_in, current_user_in):
+    def remove_account(self, account_number_in, current_user_in, password_in):
+        if not AccountController().check_password(current_user_in, password_in):
+            return False
         self.account_data = BankAccountEntity().load_account_data()
         for index, account in  enumerate(self.account_data):
             if account[1] == current_user_in and account[2] == account_number_in:

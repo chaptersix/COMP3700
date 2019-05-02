@@ -12,9 +12,11 @@ class RemoveBankAccountPage(tk.Frame):
         # current user is a User object
         self.BankController = BankAccountController()
         # unsuccessful account notification
-        self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The account number you entered does not exist")
+        self.unsuccessful1 = tk.Label(self, text="Unsuccesful")
         # successful account notification
         self.successful = tk.Label(self, text="Success! You have removed a bank account from your TigerWallet account.")
+
+        self.confirm_Password = tk.Label(self, text="Enter Password and Confirm Removal")
 
         # break up layout into multiple sub frames
         welcome_frame = tk.Frame(self)
@@ -44,11 +46,20 @@ class RemoveBankAccountPage(tk.Frame):
         self.account_number = tk.Entry(account_number_frame, width=15)
         self.account_number.pack(side="left")
 
+        password_label = tk.Label(account_number_frame, text="Password:", height=4)
+        password_label.pack(side="left")
+        self.password_entry = tk.Entry(account_number_frame, width=15)
+        self.password_entry.pack(side="left")
+
 
         # navigation buttons
-        remove_button = tk.Button(navigation_frame, text="Remove Account",
+        self.remove_button = tk.Button(navigation_frame, text="Remove Account",
                                 command=lambda: on_remove(self))
-        remove_button.pack()
+        self.remove_button.pack()
+        self.confirm_button = tk.Button(navigation_frame, text="Confirm",
+                                command=lambda:on_confirm(self))
+        self.confirm_button.pack()
+        self.confirm_button.pack_forget()
 
         return_button = tk.Button(navigation_frame, text="Back",
                                 command=lambda: controller.show_frame("ManageBankAccountPage"))
@@ -58,10 +69,22 @@ class RemoveBankAccountPage(tk.Frame):
                                 command=quit)
         exit_button.pack()
 
+
+
         def on_remove(self):
+            self.remove_button.pack_forget()
+            self.confirm_button.pack()
+            self.unsuccessful1 = tk.Label(self, text="Unsuccesful")
+            self.successful = tk.Label(self, text="Success! You have removed a bank account from your TigerWallet account.")
+
+        def on_confirm(self):
             self.unsuccessful1.pack_forget()
             self.successful.pack_forget()
-            if self.BankController.remove_account( self.account_number.get(), LoginPage.get_current_session().get_username()):
+            if self.BankController.remove_account( self.account_number.get(), LoginPage.get_current_session().get_username(), self.password_entry.get()):
                 self.successful.pack()
+                self.remove_button.pack()
+                self.confirm_button.pack_forget()
                 return
             self.unsuccessful1.pack()
+            self.remove_button.pack()
+            self.confirm_button.pack_forget()
