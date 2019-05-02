@@ -1,9 +1,15 @@
 import tkinter as tk
+import AddGoalPage
+
+# font for labels.
+LARGE_FONT = ("Times New Roman", 14)
+
 
 class NewExpenseGoal(tk.Frame):
 
-    def __init__(self, context, controller):
-        tk.Frame.__init__(self, context)
+    def __init__(self, parent, controller):
+
+        tk.Frame.__init__(self, parent)
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')
@@ -35,7 +41,7 @@ class NewExpenseGoal(tk.Frame):
                                command=lambda: controller.show_frame("AddGoalPage"))
         clk_ok_btn.pack(pady=3)
 
-        # takes you back to the tigerWallet financail goals main menu.
+        # takes you back to the tigerWallet financial goals main menu.
         cancel_btn = tk.Button(self, text="Cancel", fg='red',
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)

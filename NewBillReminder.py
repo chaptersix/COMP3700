@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 class NewBillReminder(tk.Frame):
     def __init__(self, context, controller):
         tk.Frame.__init__(self, context)
@@ -38,3 +39,4 @@ class NewBillReminder(tk.Frame):
         cancel_btn = tk.Button(self, text="Cancel", fg='red',
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
+

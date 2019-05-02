@@ -1,8 +1,13 @@
 import tkinter as tk
+import AddGoalPage
+
 
 class NewSavingsGoal(tk.Frame):
-    def __init__(self, context, controller):
-        tk.Frame.__init__(self, context)
+
+    def __init__(self, parent, controller):
+
+        savings_goal_list = []
+        tk.Frame.__init__(self, parent)
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')
@@ -28,13 +33,31 @@ class NewSavingsGoal(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
-        # need to change this to command that will add the new goal to this list.
-        # we can do this after the merge.
         clk_ok_btn = tk.Button(self, text="Okay", fg='blue',
-                               command=lambda: controller.show_frame("AddGoalPage"))
+                               command=lambda: add_savings_goal(name_entry, goal_amt_entry, exp_date_entry))
         clk_ok_btn.pack(pady=3)
 
         # takes you back to the tigerWallet financial goals main menu.
         cancel_btn = tk.Button(self, text="Cancel", fg='red',
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
+
+        def add_savings_goal(name, goal_amt, exp_date_in):
+            name = name
+            goal_amount = goal_amt
+            exp_date = exp_date_in
+            savings_goal_list.append(name)
+            savings_goal_list.append(goal_amount)
+            savings_goal_list.append(exp_date)
+
+            write_goal(name, goal_amount, exp_date)
+
+        def write_goal(name, goal_amt, exp_date_in):
+            f = open("SavingsGList.txt", "a")
+            f.write(name)
+            f.write(goal_amt)
+            f.write(exp_date_in)
+            f.close()
+
+
+
