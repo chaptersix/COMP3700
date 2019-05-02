@@ -1,12 +1,14 @@
 import tkinter as tk
+from tkinter import*
 import TigerWallet
 
 
 class NewBillReminder(tk.Frame):
     def __init__(self, context, controller):
-
-        bill_reminder_list = []
         tk.Frame.__init__(self, context)
+
+        # success label for adding a new bill reminder.
+        self.success = tk.Label(self, text="Your new Bill Reminder has been added.")
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')
@@ -32,24 +34,20 @@ class NewBillReminder(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
-        instruc_lbl = tk.Label(self, text="After you click the okay button click the Main Menu button")
-        instruc.pack()
+        bill_reminder_list = []
 
         # takes you back to the Financial goals main menu.
-        clk_ok_btn = tk.Button(self, text="Okay", fg='blue',
-                               command=lambda: add_bill_reminder_goal(name_entry.get(),
+        clk_ok_btn = tk.Button(self, text="Okay", 
+                               command=lambda: self.add_bill_reminder_goal(name_entry.get(),
                                                                       notify_day_entry.get(), exp_date_entry.get()))
         clk_ok_btn.pack(pady=3)
 
         # takes you back to the tigerWallet financial goals main menu.
-        cancel_btn = tk.Button(self, text="Cancel", fg='red',
+        cancel_btn = tk.Button(self, text="Main Menu",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
 
-        main_menu_btn = tk.Button(self, text="Main menu")
-        main_menu_btn.pack()
-
-        def add_bill_reminder_goal(name, notify_day_in, exp_date_in):
+        def add_bill_reminder_goal(self, name, notify_day_in, exp_date_in):
             name = name
             notify_day = notify_day_in
             exp_date = exp_date_in
@@ -57,9 +55,12 @@ class NewBillReminder(tk.Frame):
             bill_reminder_list.append(notify_day)
             bill_reminder_list.append(exp_date)
 
-            write_goal(name, notify_day, exp_date)
+            write_goal(self, name, notify_day, exp_date)
 
-        def write_goal(name, notify_day, exp_date_in):
-            f = open("database/billReminderList.dat.txt", "a")
-            f.writelines([name + "\n" + notify_day + "\n" + exp_date_in + "\n"])
+        def write_goal(self, name, notify_day, exp_date_in):
+            f = open("database/billReminderList.dat", "a")
+            f.writelines(["Goal Name: " + name + "\n" + "Notification Data: $ " 
+                                + notify_day + "\n" + "Expires On: " + exp_date_in + "\n"])
             f.close()
+
+            self.success.pack(bottom)

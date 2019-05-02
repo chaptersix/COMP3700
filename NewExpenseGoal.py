@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import*
 
 # font for labels.
 LARGE_FONT = ("Times New Roman", 14)
@@ -9,6 +10,9 @@ class NewExpenseGoal(tk.Frame):
         tk.Frame.__init__(self, context)
 
         expense_goal_list = [] 
+
+        # success label for adding the new goal.
+        self.success = tk.Label(self, text="Your new expense goal has been added.")
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')
@@ -34,24 +38,18 @@ class NewExpenseGoal(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
-        instruc_lbl = tk.Label(self, text="After you click the okay button click the Main Menu button")
-        instruc.pack()
-
         # Returns you to the Financial goals main menu.
         clk_ok_btn = tk.Button(self, text="Okay",
-                               command=lambda: add_expense_goal(name_entry.get(),
+                               command=lambda: self.add_expense_goal(name_entry.get(),
                                                                 monthly_spend_limit_entry.get(), exp_date_entry.get()))
         clk_ok_btn.pack(pady=3)
 
         # takes you back to the tigerWallet financial goals main menu.
-        cancel_btn = tk.Button(self, text="Cancel",
+        cancel_btn = tk.Button(self, text="Main Menu",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
 
-        main_menu_btn = tk.Button(self, text="Main menu")
-        main_menu_btn.pack()
-
-        def add_expense_goal(name, spend_limit_in, exp_date_in):
+        def add_expense_goal(self, name, spend_limit_in, exp_date_in):
             name = name
             spend_limit = spend_limit_in
             exp_date = exp_date_in
@@ -59,9 +57,13 @@ class NewExpenseGoal(tk.Frame):
             expense_goal_list.append(spend_limit)
             expense_goal_list.append(exp_date)
 
-            write_goal(name, spend_limit, exp_date)
+            write_goal(self, name, spend_limit, exp_date)
 
-        def write_goal(name, limit, exp_date_in):
-            f = open("database/expenseGList.dat.txt", "a")
-            f.writelines([name + "\n" + limit + "\n" + exp_date_in + "\n"])
+        def write_goal(self, name, limit, exp_date_in):
+            f = open("database/expenseGList.dat", "a")
+            f.writelines(["Goal Name: " + name + "\n" + "Monthly Spend Limit: $ "
+                                 + limit + "\n" + "Expires On: " + exp_date_in + "\n"])
             f.close()
+
+            self.success.pack(bottom)
+           

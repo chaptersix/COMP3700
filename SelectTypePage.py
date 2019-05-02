@@ -10,20 +10,20 @@ class SelectTypePage(tk.Frame):
         lbl.pack(padx=10, pady=10)
 
         # add new expense goal checkbox.
-        expense_goal_btn = tk.Button(self, text="Add Expense Goal", fg='purple',
+        expense_goal_btn = tk.Button(self, text="Add Expense Goal",
                                      command=lambda: controller.show_frame("NewExpenseGoal"))
         expense_goal_btn.pack(pady=10, padx=10)
 
         # add new savings goal checkbox. var2 performs same as above.
-        savings_goal_btn = tk.Button(self, text="Add Savings Goal", fg='green',
+        savings_goal_btn = tk.Button(self, text="Add Savings Goal",
                                      command=lambda: controller.show_frame("NewSavingsGoal"))
         savings_goal_btn.pack(pady=10, padx=10)
 
         # add new bill reminder checkbox. var3 performs same as above.
-        bill_reminder_btn = tk.Button(self, text="Add Bill Reminder", fg='blue',
+        bill_reminder_btn = tk.Button(self, text="Add Bill Reminder",
                                       command=lambda: controller.show_frame("NewBillReminder"))
         bill_reminder_btn.pack(pady=10, padx=10)
 
-        cancel_btn = tk.Button(self, text="Cancel", fg='red',
+        cancel_btn = tk.Button(self, text="Cancel",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=10, padx=10)
