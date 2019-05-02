@@ -16,8 +16,8 @@ import NewExpenseGoal as neg
 import AddGoalPage as agp
 import NewSavingsGoal as nsg
 import NewBillReminder as nbr
-import ViewExpenseGoalPage as veg
-import ViewSavingsGoalPage as vsg
+import ViewExpenseGoalsPage as veg
+import ViewSavingsGoalsPage as vsg
 import ViewReminderGoalsPage as vrg
 
 
@@ -39,11 +39,11 @@ class TigerWallet(tk.Tk):
 
         # tuple containing all active pages
         page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu, mbap.ManageBankAccountPage,
-                     abap.AddBankAccountPage,rbap.RemoveBankAccountPage, asm.AccountSelectionMenu,
-                     cam.CheckingAccountsMenu,sam.SavingsAccountsMenu, agp.AddGoalPage, stp.SelectTypePage,
-                     neg.NewExpenseGoal, nsg.NewSavingsGoal, nbr.NewBillReminder, tm.TransferMenu,
-                     veg.ViewExpenseGoalPage, vsg.ViewSavingsGoalPage, vrg.ViewReminderGoalsPage,
-                     ata.AccountToAccountMenu)
+                    abap.AddBankAccountPage,rbap.RemoveBankAccountPage, asm.AccountSelectionMenu,
+                    cam.CheckingAccountsMenu,sam.SavingsAccountsMenu, agp.AddGoalPage, stp.SelectTypePage,
+                    neg.NewExpenseGoal, nsg.NewSavingsGoal, nbr.NewBillReminder, tm.TransferMenu,
+                    veg.ViewExpenseGoalsPage, vsg.ViewSavingsGoalsPage, vrg.ViewReminderGoalsPage,
+                    ata.AccountToAccountMenu)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
