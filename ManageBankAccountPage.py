@@ -24,7 +24,7 @@ class ManageBankAccountPage(tk.Frame):
 
         self.controller = controller
 
-        self.lbl = tk.Label(welcome_frame, text="Manage Your Bank Acounts within TigerWallet!")
+        self.lbl = tk.Label(welcome_frame, text="Manage Your Bank Accounts within TigerWallet!")
         self.lbl.pack()
 
         # navigation buttons
@@ -36,7 +36,7 @@ class ManageBankAccountPage(tk.Frame):
                                 command=lambda: controller.show_frame("RemoveBankAccountPage"))
         add_button.pack()
 
-        return_button = tk.Button(navigation_frame, text="Back to Main Menu", 
+        return_button = tk.Button(navigation_frame, text="Return to Main Menu", 
                                 command=lambda: controller.show_frame("MainMenu"))
         return_button.pack()
 

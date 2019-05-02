@@ -19,7 +19,7 @@ class MainMenu(tk.Frame):
 
         # placeholder
         transfer_button = tk.Button(self, text="Make a Transfer", 
-                                command=self.logout)
+                                command=lambda: controller.show_frame("TransferMenu"))
         transfer_button.pack()
 
         financial_goals_button = tk.Button(self, text="Financial Goals", 
@@ -29,6 +29,10 @@ class MainMenu(tk.Frame):
         view_accounts_button = tk.Button(self, text="Check Balance", 
                                 command=lambda: controller.show_frame("AccountSelectionMenu"))
         view_accounts_button.pack()
+
+        view_snapshots_button = tk.Button(self, text="View Snapshots", 
+                                command=lambda: controller.show_frame("MainMenu"))
+        view_snapshots_button.pack()
 
         logout_button = tk.Button(self, text="Log Out", 
                                 command=self.logout)

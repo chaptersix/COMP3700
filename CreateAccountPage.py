@@ -22,6 +22,7 @@ class CreateAccountPage(tk.Frame):
         # unsuccessful login notification
         self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The username you entered is already in use.")
         self.unsuccessful2 = tk.Label(self, text="Unsuccesful. Your passwords do not match.")
+        self.unsuccessful3 = tk.Label(self, text="No spaces or empty strings allowed!")
         # successful login notification
         self.successful = tk.Label(self, text="Success! Your TigerWallet account has been created.\nReturn to the Home Page to login.")
 
@@ -73,6 +74,8 @@ class CreateAccountPage(tk.Frame):
             self.unsuccessful1.pack()
         elif password1 != password2:
             self.unsuccessful2.pack()
+        elif not username or not password1 or not password2 or " " in username or " " in password1 or " " in password2:
+            self.unsuccessful3.pack()
         else:
             self.write_new_user(username, password1)
             self.successful.pack()

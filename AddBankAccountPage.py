@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 import LoginPage
 from BankAccount import BankAccountController
 
@@ -14,6 +15,7 @@ class AddBankAccountPage(tk.Frame):
 
         # unsuccessful account notification
         self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The account number you entered is already in use.")
+        self.unsuccessful2 = tk.Label(self, text="No spaces or empty strings allowed!")
         # successful account notification
         self.successful = tk.Label(self, text="Success! You have added a bank account to your TigerWallet account.")
 
@@ -24,6 +26,11 @@ class AddBankAccountPage(tk.Frame):
         select_bank_frame.pack()
         account_number_frame = tk.Frame(self)
         account_number_frame.pack()
+        checkbutton_frame = tk.Frame(self)
+        checkbutton_frame.pack()
+        balance_frame = tk.Frame(self)
+        balance_frame.pack()
+
 
         navigation_frame = tk.Frame(self)
         navigation_frame.pack()
@@ -50,6 +57,26 @@ class AddBankAccountPage(tk.Frame):
         self.account_number = tk.Entry(account_number_frame, width=15)
         self.account_number.pack(side="left")
 
+        account_type = ""
+        # get account type
+        checkingbox = IntVar()
+        checking = tk.Checkbutton(checkbutton_frame, text = 'Checking Account', variable = checkingbox)
+        checking.pack()
+
+        savingsbox = IntVar()
+        savings = tk.Checkbutton(checkbutton_frame, text='Savings Account', variable=savingsbox)
+        savings.pack()
+
+        if checkingbox == 1:
+            self.account_type = "checking"
+        else:
+            self.account_type = "savings"
+
+        # Request the user for the current balance of that account.
+        account_balance = tk.Label(balance_frame, text="Current Balance:", height=4)
+        account_balance.pack(side="left")
+        self.account_balance = tk.Entry(balance_frame, width=15)
+        self.account_balance.pack(side="left")
 
         # navigation buttons
         add_button = tk.Button(navigation_frame, text="Add Account",
@@ -67,7 +94,7 @@ class AddBankAccountPage(tk.Frame):
         def on_add(self):
             self.unsuccessful1.pack_forget()
             self.successful.pack_forget()
-            if self.BankController.add_account(self.bank.get(), self.account_number.get(), LoginPage.get_current_session().get_username()):
+            if self.BankController.add_account(self.bank.get(), self.account_number.get(), LoginPage.get_current_session().get_username(), self.account_type, self.account_balance.get()):
                 self.successful.pack()
                 return
             self.unsuccessful1.pack()

@@ -1,4 +1,6 @@
 import tkinter as tk
+import LoginPage
+from BankAccount import BankAccountEntity
 
 
 class SavingsAccountsMenu(tk.Frame):
@@ -13,17 +15,28 @@ class SavingsAccountsMenu(tk.Frame):
         main_frame = tk.Frame(self)
         main_frame.pack()
 
-        # Add place holder buttons for the user's checking accounts. The buttons will be formatted to contain the text
-        # of the account number and the current balance of that account.
+        # Get the current user's information.
+        current_user = LoginPage.get_current_session()
 
-        acct_button_1 = tk.Button(main_frame, text = "Savings Account 1", fg = "black")
-        acct_button_1.pack()
+        # Find the bank accounts associated with this user.
+        bank_account_info = BankAccountEntity()
+        bank_accounts = bank_account_info.load_account_data()
 
-        acct_button_2 = tk.Button(main_frame, text = "Savings Account 2", fg = "black")
-        acct_button_2.pack()
+        buttons = []
 
-        acct_button_3 = tk.Button(main_frame, text="Savings Account 3", fg="black")
-        acct_button_3.pack()
+        for account in bank_accounts:
+            owner = account[0]
+            user = account[1]
+            account_number = account[2]
+            account_type = account[3]
+            balance = account[4]
+            if current_user.get_username() == user and account_type == "savings":
+                savings_account = tk.Button(main_frame, text="Account Number: " + account_number
+                                                              + " Balance: $" + balance, fg="black")
+                buttons.append(savings_account)
+
+        for button in buttons:
+            button.pack()
 
         # Add a return button to go back to the AccountSelectionMenu
         account_select_button = tk.Button(main_frame, text = "Go Back to Account Types", fg = "black",
