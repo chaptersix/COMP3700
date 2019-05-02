@@ -7,6 +7,7 @@ class BankAccountEntity():
         with open("database/bank_username_account.dat", "r") as bank_file:
             for line in bank_file.readlines():
                 line = line.split()
+                print(line)
                 bank = line[0]
                 user = line[1]
                 account = line[2]
@@ -36,6 +37,8 @@ class BankAccountController:
             return False
 
     def add_account(self, bank_in, account_number_in, current_user_in):
+        if not bank_in or not account_number_in or " " in bank_in or " " in account_number_in:
+            return False 
         self.account_data = BankAccountEntity().load_account_data()
         bank_in = bank_in.lower()
         if  not self.is_account_active(account_number_in):

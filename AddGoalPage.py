@@ -24,5 +24,5 @@ class AddGoalPage(tk.Frame):
                                             command=lambda: controller.show_frame("BillReminders"))
         view_bill_reminders_btn.pack(pady=10, padx=10)
 
-        home_btn = tk.Button(self, text="Main Menu", command=lambda: controller.show_frame("MainMenu"))
+        home_btn = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame("MainMenu"))
         home_btn.pack(pady=10, padx=10)

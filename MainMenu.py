@@ -30,6 +30,10 @@ class MainMenu(tk.Frame):
                                 command=lambda: controller.show_frame("AccountSelectionMenu"))
         view_accounts_button.pack()
 
+        view_snapshots_button = tk.Button(self, text="View Snapshots", 
+                                command=lambda: controller.show_frame("MainMenu"))
+        view_snapshots_button.pack()
+
         logout_button = tk.Button(self, text="Log Out", 
                                 command=self.logout)
         logout_button.pack()

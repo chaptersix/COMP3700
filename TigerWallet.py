@@ -19,7 +19,7 @@ import AccountToAccountMenu as ata
 
 
 # Each TigerWallet instance inherits tk.  
-# Primary interface controller
+# Primary interface controller.
 class TigerWallet(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)

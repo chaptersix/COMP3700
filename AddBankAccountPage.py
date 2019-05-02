@@ -14,6 +14,7 @@ class AddBankAccountPage(tk.Frame):
 
         # unsuccessful account notification
         self.unsuccessful1 = tk.Label(self, text="Unsuccesful. The account number you entered is already in use.")
+        self.unsuccessful2 = tk.Label(self, text="No spaces or empty strings allowed!")
         # successful account notification
         self.successful = tk.Label(self, text="Success! You have added a bank account to your TigerWallet account.")
 
