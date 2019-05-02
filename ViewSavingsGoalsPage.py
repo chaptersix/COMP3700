@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class ViewSavingsGoalPage(tk.Frame):
+class ViewSavingsGoalsPage(tk.Frame):
     def __init__(self, context, controller):
         tk.Frame.__init__(self, context)
 

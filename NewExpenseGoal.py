@@ -6,10 +6,8 @@ LARGE_FONT = ("Times New Roman", 14)
 
 
 class NewExpenseGoal(tk.Frame):
-
-    def __init__(self, parent, controller):
-
-        tk.Frame.__init__(self, parent)
+    def __init__(self, context, controller):
+        tk.Frame.__init__(self, context)
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')

@@ -87,10 +87,6 @@ class AddBankAccountPage(tk.Frame):
                                 command=lambda: controller.show_frame("ManageBankAccountPage"))
         return_button.pack()
 
-        exit_button = tk.Button(navigation_frame, text="Exit",
-                                command=quit)
-        exit_button.pack()
-
         def on_add(self):
             self.unsuccessful1.pack_forget()
             self.successful.pack_forget()
