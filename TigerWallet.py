@@ -19,6 +19,11 @@ import NewBillReminder as nbr
 import ViewExpenseGoalsPage as veg
 import ViewSavingsGoalsPage as vsg
 import ViewReminderGoalsPage as vrg
+import DeleteContact as dc
+import ContactAdded as ca
+import Contacts as con
+import PeerToPeer as ptp
+import TransferSuccessful as ts
 
 
 # Each TigerWallet instance inherits tk.
@@ -43,7 +48,8 @@ class TigerWallet(tk.Tk):
                     cam.CheckingAccountsMenu,sam.SavingsAccountsMenu, agp.AddGoalPage, stp.SelectTypePage,
                     neg.NewExpenseGoal, nsg.NewSavingsGoal, nbr.NewBillReminder, tm.TransferMenu,
                     veg.ViewExpenseGoalsPage, vsg.ViewSavingsGoalsPage, vrg.ViewReminderGoalsPage,
-                    ata.AccountToAccountMenu)
+                    ata.AccountToAccountMenu, dc.DeleteContact, ca.ContactAdded, con.Contacts, ptp.PeerToPeer,
+                     ts.TransferSuccessful)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple

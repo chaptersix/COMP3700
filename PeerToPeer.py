@@ -32,7 +32,7 @@ class PeerToPeer(tk.Frame):
         self.to_entry.pack(side="left")
 
         submit_button = tk.Button(navigation_frame, text="Submit",
-                                  command=lambda: self.login(self.home_entry.get(), self.to_entry.get()))
+                                  command=lambda: controller.show_frame("TransferSuccessful"))
         submit_button.pack()
 
         return_button = tk.Button(navigation_frame, text="Back To Transfer Menu",

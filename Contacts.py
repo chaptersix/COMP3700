@@ -22,9 +22,11 @@ class Contacts(tk.Frame):
         user_label.pack(side="left")
         self.add_entry = tk.Entry(contacts_frame, width=15)
         self.add_entry.pack(side="left")
-        add_button = tk.Button(contacts_frame, text="Add")
+        add_button = tk.Button(contacts_frame, text="Add",
+                               command=lambda: controller.show_frame("ContactAdded"))
         add_button.pack(side="left")
-        delete_button = tk.Button(contacts_frame, text="Delete")
+        delete_button = tk.Button(contacts_frame, text="Delete",
+                                  command=lambda: controller.show_frame("DeleteContact"))
         delete_button.pack(side ="left")
 
         login_button = tk.Button(navigation_frame, text="View Contacts",
