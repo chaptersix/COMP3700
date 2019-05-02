@@ -32,6 +32,9 @@ class NewBillReminder(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
+        instruc_lbl = tk.Label(self, text="After you click the okay button click the Main Menu button")
+        instruc.pack()
+
         # takes you back to the Financial goals main menu.
         clk_ok_btn = tk.Button(self, text="Okay", fg='blue',
                                command=lambda: add_bill_reminder_goal(name_entry.get(),
@@ -42,6 +45,9 @@ class NewBillReminder(tk.Frame):
         cancel_btn = tk.Button(self, text="Cancel", fg='red',
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
+
+        main_menu_btn = tk.Button(self, text="Main menu")
+        main_menu_btn.pack()
 
         def add_bill_reminder_goal(name, notify_day_in, exp_date_in):
             name = name
@@ -54,6 +60,6 @@ class NewBillReminder(tk.Frame):
             write_goal(name, notify_day, exp_date)
 
         def write_goal(name, notify_day, exp_date_in):
-            f = open("database/billReminderList.dat", "a")
+            f = open("database/billReminderList.dat.txt", "a")
             f.writelines([name + "\n" + notify_day + "\n" + exp_date_in + "\n"])
             f.close()

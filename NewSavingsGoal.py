@@ -33,6 +33,9 @@ class NewSavingsGoal(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
+        instruc_lbl = tk.Label(self, text="After you click the okay button click the Main Menu button")
+        instruc.pack()
+
         clk_ok_btn = tk.Button(self, text="Okay", fg='blue',
                                command=lambda: add_savings_goal(name_entry.get(), goal_amt_entry.get(), exp_date_entry.get()))
         clk_ok_btn.pack(pady=3)
@@ -41,6 +44,9 @@ class NewSavingsGoal(tk.Frame):
         cancel_btn = tk.Button(self, text="Cancel",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
+
+        main_menu_btn = tk.Button(self, text="Main menu")
+        main_menu_btn.pack()
 
         def add_savings_goal(name, goal_amt, exp_date_in):
             name = name
@@ -51,9 +57,10 @@ class NewSavingsGoal(tk.Frame):
             savings_goal_list.append(exp_date)
 
             write_goal(name, goal_amount, exp_date)
+            
 
         def write_goal(name, goal_amt, exp_date_in):
-            f = open("database/savingsGList.dat", "a")
+            f = open("database/savingsGList.dat.txt", "a")
             f.writelines([name + "\n" + goal_amt + "\n" + exp_date_in + "\n"])
             f.close()
 

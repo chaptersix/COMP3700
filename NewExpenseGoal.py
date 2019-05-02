@@ -34,6 +34,9 @@ class NewExpenseGoal(tk.Frame):
         exp_date_entry = tk.Entry(frame3)
         exp_date_entry.pack(fill='x', padx=5, expand=True)
 
+        instruc_lbl = tk.Label(self, text="After you click the okay button click the Main Menu button")
+        instruc.pack()
+
         # Returns you to the Financial goals main menu.
         clk_ok_btn = tk.Button(self, text="Okay",
                                command=lambda: add_expense_goal(name_entry.get(),
@@ -44,6 +47,9 @@ class NewExpenseGoal(tk.Frame):
         cancel_btn = tk.Button(self, text="Cancel",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
+
+        main_menu_btn = tk.Button(self, text="Main menu")
+        main_menu_btn.pack()
 
         def add_expense_goal(name, spend_limit_in, exp_date_in):
             name = name
@@ -56,6 +62,6 @@ class NewExpenseGoal(tk.Frame):
             write_goal(name, spend_limit, exp_date)
 
         def write_goal(name, limit, exp_date_in):
-            f = open("database/expenseGList.dat", "a")
+            f = open("database/expenseGList.dat.txt", "a")
             f.writelines([name + "\n" + limit + "\n" + exp_date_in + "\n"])
             f.close()

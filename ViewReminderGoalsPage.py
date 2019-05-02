@@ -11,10 +11,10 @@ class ViewReminderGoalsPage(tk.Frame):
         self.exp_date = tk.StringVar()
         listbox = tk.Listbox(self)
 
-        lbl = tk.Label(self, text="Your Current Bill Reminder goals are listed below.")
+        lbl = tk.Label(self, text="Your current Bill Reminder goals are listed below.")
         lbl.pack(pady=10, padx=10)
 
-        f = open("database/billReminderList.dat", "r")
+        f = open("database/billReminderList.dat.txt", "r")
         for line in f.readlines():
             line = line.split()
             self.var_name = line[0]

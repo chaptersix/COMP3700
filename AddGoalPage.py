@@ -8,7 +8,7 @@ class AddGoalPage(tk.Frame):
         lbl = tk.Label(self, text="Welcome to the TigerWallet Financial Goals Menu!")
         lbl.pack(pady=10, padx=10)
 
-        add_btn = tk.Button(self, text='Add Financial Goal', fg='blue',
+        add_btn = tk.Button(self, text='Add Financial Goal',
                             command=lambda: controller.show_frame("SelectTypePage"))
         add_btn.pack(padx=10, pady=10)
 
