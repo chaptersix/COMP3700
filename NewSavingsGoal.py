@@ -1,5 +1,4 @@
 import tkinter as tk
-import AddGoalPage
 
 
 class NewSavingsGoal(tk.Frame):
@@ -38,7 +37,7 @@ class NewSavingsGoal(tk.Frame):
         clk_ok_btn.pack(pady=3)
 
         # takes you back to the tigerWallet financial goals main menu.
-        cancel_btn = tk.Button(self, text="Cancel", fg='red',
+        cancel_btn = tk.Button(self, text="Cancel",
                                command=lambda: controller.show_frame("AddGoalPage"))
         cancel_btn.pack(pady=3)
 
@@ -53,11 +52,7 @@ class NewSavingsGoal(tk.Frame):
             write_goal(name, goal_amount, exp_date)
 
         def write_goal(name, goal_amt, exp_date_in):
-            f = open("database/savingsGList.txt", "a")
-            f.write(name)
-            f.write(goal_amt)
-            f.write(exp_date_in)
+            f = open("database/savingsGList.dat", "a")
+            f.writelines([name + "\n" + goal_amt + "\n" + exp_date_in + "\n"])
             f.close()
-
-
 
