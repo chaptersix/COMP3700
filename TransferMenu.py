@@ -14,13 +14,21 @@ class TransferMenu(tk.Frame):
         label1 = tk.Label(transfer_frame, text="Select a transfer type or view contact!")
         label1.pack()
 
-        login_button = tk.Button(transfer_frame, text="Account to account",
+        AccTo_button = tk.Button(transfer_frame, text="Account to account",
                                  command=lambda: controller.show_frame("AccountToAccountMenu"))
-        login_button.pack()
+        AccTo_button.pack()
 
-        create_account_button = tk.Button(transfer_frame, text="Peer to peer",
-                                          command=lambda: controller.show_frame("AccountToAccountMenu"))
-        create_account_button.pack()
+        pTp_button = tk.Button(transfer_frame, text="Peer to peer",
+                                          command=lambda: controller.show_frame("PeerToPeer"))
+        pTp_button.pack()
+
+        contact_button = tk.Button(transfer_frame, text="Contacts",
+                                   command=lambda: controller.show_frame("Contacts"))
+        contact_button.pack()
+
+        Main_Menu_button = tk.Button(transfer_frame, text="Return to Main Menu",
+                                   command=lambda: controller.show_frame("MainMenu"))
+        Main_Menu_button.pack()
 
         exit_button = tk.Button(transfer_frame, text="Exit",
                                 command=quit)

@@ -16,6 +16,8 @@ import NewSavingsGoal as nsg
 import NewBillReminder as nbr
 import TransferMenu as tm
 import AccountToAccountMenu as ata
+import Contacts as con
+import PeerToPeer as ptp
 
 
 # Each TigerWallet instance inherits tk.  
@@ -38,7 +40,7 @@ class TigerWallet(tk.Tk):
         page_list = (hp.HomePage, lp.LoginPage, cap.CreateAccountPage, mm.MainMenu, mbap.ManageBankAccountPage, abap.AddBankAccountPage
                     ,rbap.RemoveBankAccountPage, asm.AccountSelectionMenu, cam.CheckingAccountsMenu,sam.SavingsAccountsMenu, agp.AddGoalPage
                     ,stp.SelectTypePage, neg.NewExpenseGoal, nsg.NewSavingsGoal, nbr.NewBillReminder, tm.TransferMenu
-                    , ata.AccountToAccountMenu)
+                    , ata.AccountToAccountMenu, con.Contacts, ptp.PeerToPeer)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
