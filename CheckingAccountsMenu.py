@@ -1,7 +1,5 @@
 import tkinter as tk
 
-
-
 class CheckingAccountsMenu(tk.Frame):
     # context = parent
     # controller = TigerWallet object
