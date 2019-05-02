@@ -33,7 +33,7 @@ class AccountSelectionMenu(tk.Frame):
                                    command=lambda: controller.show_frame("SavingsAccountsMenu"))
         savings_button.grid(row = 0, column = 1)
 
-        home_button = tk.Button(options_frame, text="Back to Main Menu", fg="black",
+        home_button = tk.Button(options_frame, text="Return to Main Menu", fg="black",
                                 command=lambda: controller.show_frame("MainMenu"))
         home_button.grid(row = 1, columnspan = 2)
 

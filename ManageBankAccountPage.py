@@ -36,7 +36,7 @@ class ManageBankAccountPage(tk.Frame):
                                 command=lambda: controller.show_frame("RemoveBankAccountPage"))
         add_button.pack()
 
-        return_button = tk.Button(navigation_frame, text="Back to Main Menu", 
+        return_button = tk.Button(navigation_frame, text="Return to Main Menu", 
                                 command=lambda: controller.show_frame("MainMenu"))
         return_button.pack()
 
