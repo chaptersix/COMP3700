@@ -1,4 +1,5 @@
 import tkinter as tk
+import TigerWallet
 
 class CreateAccountPage(tk.Frame):
     def __init__(self, context, controller):

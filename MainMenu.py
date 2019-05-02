@@ -1,4 +1,5 @@
 import tkinter as tk
+import TigerWallet
 
 # currently in placeholder mode
 class MainMenu(tk.Frame):

@@ -1,9 +1,9 @@
 import tkinter as tk
+import TigerWallet
 
 
 class ViewReminderGoalsPage(tk.Frame):
     def __init__(self, context, controller):
-
         tk.Frame.__init__(self, context)
 
         self.name = tk.StringVar()

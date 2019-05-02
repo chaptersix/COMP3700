@@ -1,4 +1,5 @@
 import tkinter as tk
+import TigerWallet
 
 class Contacts(tk.Frame):
     # context = parent

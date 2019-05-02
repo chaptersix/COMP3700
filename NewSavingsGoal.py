@@ -1,12 +1,13 @@
 import tkinter as tk
+import TigerWallet
 
 
 class NewSavingsGoal(tk.Frame):
 
-    def __init__(self, parent, controller):
+    def __init__(self, context, controller):
 
         savings_goal_list = []
-        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, context)
 
         frame1 = tk.Frame(self)
         frame1.pack(fill='x')

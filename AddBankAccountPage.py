@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+import TigerWallet
 import LoginPage
 from BankAccount import BankAccountController
 

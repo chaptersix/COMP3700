@@ -1,5 +1,5 @@
 import tkinter as tk
-
+import TigerWallet
 
 class AddGoalPage(tk.Frame):
 
@@ -9,17 +9,17 @@ class AddGoalPage(tk.Frame):
         lbl = tk.Label(self, text="Welcome to the TigerWallet Financial Goals Menu!")
         lbl.pack(pady=10, padx=10)
 
-        add_btn = tk.Button(self, text='Add Financial Goal', fg='blue',
+        add_btn = tk.Button(self, text='Add Financial Goal',
                             command=lambda: controller.show_frame("SelectTypePage"))
         add_btn.pack(padx=10, pady=10)
 
         # view current expense goals
         view_expense_btn = tk.Button(self, Text="View Current Expense Goals",
-                                     command=lambda: controller.show_frame("ViewExpenseGoalPage"))
+                                     command=lambda: controller.show_frame("ViewExpenseGoalsPage"))
         view_expense_btn.pack(pady=10, padx=10)
 
         view_savings_btn = tk.Button(self, Text="View Current Expense Goals",
-                                     command=lambda: controller.show_frame("ViewSavingsGoalPage"))
+                                     command=lambda: controller.show_frame("ViewSavingsGoalsPage"))
         view_savings_btn.pack(pady=10, padx=10)
 
         view_reminders_btn = tk.Button(self, Text="View Current Expense Goals",

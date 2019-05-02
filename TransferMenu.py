@@ -1,4 +1,5 @@
 import tkinter as tk
+import TigerWallet
 
 class TransferMenu(tk.Frame):
     # context = parent

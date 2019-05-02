@@ -1,3 +1,5 @@
+import TigerWallet
+
 class BankAccountEntity():
     def __init__(self):
         pass

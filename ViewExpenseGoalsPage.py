@@ -1,7 +1,8 @@
 import tkinter as tk
+import TigerWallet
 
 
-class ViewExpenseGoalPage(tk. Frame):
+class ViewExpenseGoalsPage(tk. Frame):
 
     def __init__(self, context, controller):
         tk.Frame.__init__(self, context)

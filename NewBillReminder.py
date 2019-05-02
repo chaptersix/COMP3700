@@ -1,4 +1,5 @@
 import tkinter as tk
+import TigerWallet
 
 
 class NewBillReminder(tk.Frame):
