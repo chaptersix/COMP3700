@@ -11,14 +11,17 @@ class BankAccountEntity():
                 bank = line[0]
                 user = line[1]
                 account = line[2]
-                account_data.append([bank, user, account])
+                acct_type = line[3]
+                balance = line[4]
+                account_data.append([bank, user, account, acct_type, balance])
         print("Load Bank Accounts:\n{}".format(account_data))
         return account_data
 
     def write_active_accounts(self, account_data_in):
         outStr = ""
         for line in account_data_in:
-            outStr += "{} {} {}\n".format(line[0], line[1], line[2])
+            outStr += "{} {} {} {} {}\n".format(line[0], line[1], line[2], line[3], line[4])
+            print(line)
         with open("database/bank_username_account.dat", "w") as bank_file:
             bank_file.write(outStr)
 
@@ -36,13 +39,13 @@ class BankAccountController:
                     return True
             return False
 
-    def add_account(self, bank_in, account_number_in, current_user_in):
+    def add_account(self, bank_in, account_number_in, current_user_in, account_type_in, balance_in):
         if not bank_in or not account_number_in or " " in bank_in or " " in account_number_in:
-            return False 
+            return False
         self.account_data = BankAccountEntity().load_account_data()
         bank_in = bank_in.lower()
         if  not self.is_account_active(account_number_in):
-            self.account_data.append([bank_in, current_user_in, account_number_in])
+            self.account_data.append([bank_in, current_user_in, account_number_in, account_type_in, balance_in])
             BankAccountEntity().write_active_accounts(self.account_data)
             return True
         return False
@@ -55,6 +58,7 @@ class BankAccountController:
                 BankAccountEntity().write_active_accounts(self.account_data)
                 return True
         return False
+
 
     def load_user_data(self):
         with open("database/user_data.dat", "r") as user_file:

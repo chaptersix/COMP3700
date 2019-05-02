@@ -31,5 +31,3 @@ class User():
 
     def add_bank_account(self, new_account):
         self.bank_accounts.append(new_account)
-    
-        
