@@ -30,7 +30,7 @@ class Contacts(tk.Frame):
         delete_button.pack(side ="left")
 
         login_button = tk.Button(navigation_frame, text="View Contacts",
-                                 command=lambda: controller.show_frame("AccountToAccountMenu"))
+                                 command=lambda: controller.show_frame("ViewContacts"))
         login_button.pack()
 
         return_button = tk.Button(navigation_frame, text="Return to Transfer Menu",

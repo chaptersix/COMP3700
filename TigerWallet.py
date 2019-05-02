@@ -24,6 +24,7 @@ import ContactAdded as ca
 import Contacts as con
 import PeerToPeer as ptp
 import TransferSuccessful as ts
+import ViewContacts as vc
 
 
 # Each TigerWallet instance inherits tk.
@@ -49,7 +50,7 @@ class TigerWallet(tk.Tk):
                     neg.NewExpenseGoal, nsg.NewSavingsGoal, nbr.NewBillReminder, tm.TransferMenu,
                     veg.ViewExpenseGoalsPage, vsg.ViewSavingsGoalsPage, vrg.ViewReminderGoalsPage,
                     ata.AccountToAccountMenu, dc.DeleteContact, ca.ContactAdded, con.Contacts, ptp.PeerToPeer,
-                     ts.TransferSuccessful)
+                     ts.TransferSuccessful, vc.ViewContacts)
         # dictionary mapping frames to the corresponding page names
         self.frames = {}
         # add additional pages to this tuple
